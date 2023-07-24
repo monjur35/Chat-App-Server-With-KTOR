@@ -1,0 +1,1 @@
+rootProject.name = "com.monjur.ktor_chat_backend"
