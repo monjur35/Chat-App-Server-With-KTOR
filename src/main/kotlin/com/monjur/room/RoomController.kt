@@ -38,6 +38,7 @@ class RoomController(val messageDataSource:MessegeDatSource) {
             messageDataSource.insertMessage(messageEntry)
 
             val jsonMsg= Json.encodeToString(message)
+            println(jsonMsg)
             aMember.webSocket.send(Frame.Text(jsonMsg))
         }
     }

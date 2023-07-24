@@ -1,13 +1,16 @@
 package com.monjur.plugins
 
-import io.ktor.server.routing.*
-import io.ktor.server.response.*
+import com.monjur.room.RoomController
+import com.monjur.routes.ChatSocketRoute
+import com.monjur.routes.getAllMsg
 import io.ktor.server.application.*
+import io.ktor.server.routing.*
+import org.koin.ktor.ext.inject
 
 fun Application.configureRouting() {
-    routing {
-        get("/") {
-            call.respondText("Hello World!")
-        }
+    val controller by inject<RoomController>()
+    install(Routing) {
+        ChatSocketRoute(controller)
+        getAllMsg(controller)
     }
 }

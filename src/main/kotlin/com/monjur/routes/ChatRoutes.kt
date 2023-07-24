@@ -13,7 +13,7 @@ import io.ktor.websocket.*
 import kotlinx.coroutines.channels.consumeEach
 
 fun Route.ChatSocketRoute(controller: RoomController) {
-    webSocket {
+    webSocket("chat-socket") {
         val session = call.sessions.get<UserSession>()
         if (session == null) {
             close(CloseReason(CloseReason.Codes.TRY_AGAIN_LATER, "Session Expired"))
